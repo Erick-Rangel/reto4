@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #388e3c;
+}
+
+#result {
+  text-align: center;
+  font-size: 48px;
+  margin-top: 20px;
+}
+
+#result::before {
+  content: "$";
+}
+
+#result::after {
+  content: "";
+  display: block;
+  margin-top: 5px;
+  font-size: 24px;
+}
+
+/* Separador de miles */
+#result::before,
+#result::after {
+  transition: 0.3s;
+}
+
+#result.format::before {
+  content: "";
+}
+
+#result.format::after {
+  content: attr(data-value);
+}
+
+#result.format::after {
+  animation: comma-separator 0.5s ease-in-out;
+}
+
+@keyframes comma-separator {
+  0% {
+    content: attr(data-value);
+  }
+  100% {
+    content: attr(data-value) ",000";
+  }
+}

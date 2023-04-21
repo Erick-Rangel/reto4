@@ -1,0 +1,16 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#content {
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.item {
+	background-color: #eee;
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-bottom: 10px;
+}
