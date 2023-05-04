@@ -1,0 +1,23 @@
+<!Doctype html>
+<html>
+
+<head>
+	<title>Convertir número a palabras</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+	<h1>Convertir número a palabras</h1>
+	<form method="POST">
+		<label for="number">Ingrese un número:</label>
+		<input type="number" id="number" name="number" required>
+		<br><br>
+		<button type="submit" >Convertir</button>
+	</form>
+	{% if words %}
+	<h2>En palabras: {{ words }}</h2>
+	{% endif %}
+</body>
+
+</html>

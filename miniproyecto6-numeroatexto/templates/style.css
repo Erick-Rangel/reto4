@@ -1,0 +1,43 @@
+/* Estilos para el título */
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type="number"] {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #ccc;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* Estilos para el resultado */
+h2 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-align: center;
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Obtener rating de película</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Ingresa el nombre de la película</h1>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="/results">
+      <input type="text" name="movie_name">
+      <input type="submit" value="Obtener rating">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Juego del ahorcado</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Juego del ahorcado</h1>
+    <h2>¡Adivina la palabra!</h2>
+    <div id="muñeco">
+        {% if vidas < 6 %}<div id="cabeza">
+    </div>{% endif %}
+    {% if vidas < 5 %}<div id="tronco">
+        </div>{% endif %}
+        {% if vidas < 4 %}<div id="brazo_izq">
+            </div>{% endif %}
+            {% if vidas < 3 %}<div id="brazo_der">
+                </div>{% endif %}
+                {% if vidas < 2 %}<div id="pierna_izq">
+                    </div>{% endif %}
+                    {% if vidas < 1 %}<div id="pierna_der">
+                        </div>{% endif %}
+                        </div>
+                        <p>Palabra:</p>
+                        <div id="palabra">
+                            {% for letra in letras %}
+                            <span>{{ letra }}</span>
+                            {% endfor %}
+                        </div>
+                        <form id="formulario" method="post">
+                            <label for="letra">Ingresa una letra:</label>
+                            <input type="text" id="letra" name="letra" maxlength="1">
+                            <input type="submit" value="Adivinar">
+                        </form>
+</body>
+
+</html>

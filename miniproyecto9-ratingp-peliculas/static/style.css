@@ -1,0 +1,90 @@
+/* Estilos para el encabezado */
+header {
+  background-color: #252a33;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 2em;
+}
+
+/* Estilos para el cuerpo */
+body {
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Estilos para la sección de búsqueda */
+.search-section {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.search-section h2 {
+  margin: 0 0 20px;
+}
+
+.search-section input[type="text"] {
+  border: none;
+  border-bottom: 2px solid #252a33;
+  font-size: 1.2em;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.search-section input[type="submit"] {
+  background-color: #252a33;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Estilos para la sección de resultados */
+.results-section {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.results-section h2 {
+  margin: 0 0 20px;
+}
+
+.results-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.results-section li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #252a33;
+}
+
+.results-section li:last-child {
+  margin-bottom: 0;
+}
+
+.results-section h3 {
+  margin: 0 0 5px;
+}
+
+.results-section p {
+  margin: 0;
+  font-size: 0.8em;
+  color: #555;
+}
