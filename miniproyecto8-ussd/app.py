@@ -1,53 +1,48 @@
-from flask import Flask, request, render_template
+from flask import Flask, request
 import africastalking
-from flask_ussd import UssdRequest, UssdResponse, ussd
+
+# Configuración de las credenciales de Africa's Talking
+username = "sandbox"
+api_key = "84f299d4e6b0108e5568e2f50c7ee4bca18ffb5acd61c31708e3c98dbcade257"
+africastalking.initialize(username, api_key)
 
 app = Flask(__name__)
-ussd_service = ussd(app, __name__)
 
-# Definir ruta para recibir mensajes USSD
+@app.route('/ussd', methods=['POST'])
+def ussd_callback():
+    # Obtener datos de la solicitud USSD
+    session_id = request.values.get("sessionId", None)
+    phone_number = request.values.get("phoneNumber", None)
+    service_code = request.values.get("serviceCode", None)
+    text = request.values.get("text", "")
 
-
-@ussd_service.on_request
-def handle_request(req: UssdRequest):
-    # Obtener datos del mensaje USSD
-    session_id = req.sessionId
-    phone_number = req.phoneNumber
-    service_code = req.serviceCode
-    text = req.text
-
-    # Procesar el mensaje USSD
-    response_text = "Bienvenido al menú de ejemplo para USSD\n"
+    # Procesar la solicitud USSD
     if text == "":
-        response_text += "Selecciona una opción del 1 al 3"
+        # Menú principal
+        response = "CON Bienvenido al menú de mi aplicación USSD.\n"
+        response += "Seleccione una opción:\n"
+        response += "1. Saldo de mi cuenta\n"
+        response += "2. Recargar mi cuenta\n"
+        response += "3. Salir"
     elif text == "1":
-        response_text += "Has seleccionado la opción 1"
+        # Consultar saldo
+        response = "END Su saldo actual es de $50"
     elif text == "2":
-        response_text += "Has seleccionado la opción 2"
+        # Solicitar monto de recarga
+        response = "CON Ingrese el monto a recargar:"
+    elif text.isdigit():
+        # Procesar recarga
+        amount = int(text)
+        new_balance = 50 + amount
+        response = "END Recarga exitosa de ${}. Su nuevo saldo es de ${}".format(amount, new_balance)
     elif text == "3":
-        response_text += "Has seleccionado la opción 3"
+        # Salir
+        response = "END Gracias por usar nuestra aplicación USSD. ¡Hasta luego!"
     else:
-        response_text += "Opción no válida. Selecciona una opción del 1 al 3"
+        # Opción no válida
+        response = "END Opción no válida. Inténtelo de nuevo."
 
-    # Devolver respuesta a Africa's Talking
-    response = UssdResponse(response_text, 1)
-    return response.to_dict()
-
-
-# Definir ruta para recibir mensajes SMS
-@app.route('/sms', methods=['POST'])
-def receive_sms():
-    # Obtener los datos del mensaje SMS
-    message = request.values.get('text', None)
-    phone_number = request.values.get('from', None)
-    response = "Hemos recibido tu mensaje: " + message
-
-    # Enviar respuesta SMS a través de Africa's Talking
-    sms = africastalking.SMS
-    sms.send(response, [phone_number])
-
-    return 'OK'
-
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
