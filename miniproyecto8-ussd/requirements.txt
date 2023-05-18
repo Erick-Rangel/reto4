@@ -1,2 +1,2 @@
 flask==2.2.3
-africastalking==6.0.0
+africastalking==1.2.5
